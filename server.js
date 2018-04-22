@@ -7,6 +7,10 @@ app.use(bodyParser.json());
 
 const router = require("express-promise-router")();
 
+router.get("/", (req, res) => {
+  res.send("<h1>Приложение запущено!</h1>");
+});
+
 /**
  * Заполнить БД данными
  */

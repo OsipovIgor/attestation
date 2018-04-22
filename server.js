@@ -9,6 +9,8 @@ app.use(bodyParser.json());
 
 const router = require("express-promise-router")();
 
+const PORT = process.env.PORT || 5000;
+
 router.get("/", (req, res) => {
   res.send("<h1>Приложение запущено!</h1>");
 });
@@ -31,6 +33,6 @@ router.post("/add_user", (req, res) => {});
 
 app.use("/api", router);
 
-app.listen(80, function() {
-  console.log("Example app listening on port 3000!");
+app.listen(PORT, function() {
+  console.log(`Example app listening on port ${3000}!`);
 });

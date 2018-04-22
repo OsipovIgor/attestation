@@ -2,6 +2,8 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 
+const { getPlatforms } = require("./dbManager");
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -9,6 +11,12 @@ const router = require("express-promise-router")();
 
 router.get("/", (req, res) => {
   res.send("<h1>Приложение запущено!</h1>");
+});
+
+router.get("/platforms", (req, res) => {
+  getPlatforms().then(response => {
+    res.json(response);
+  });
 });
 
 /**

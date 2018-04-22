@@ -1,0 +1,116 @@
+Спецификация c#:
+Структуры (structs)
+Кортежи
+Тип данных dynamic
+Битовые флаги в перечислении
+Упаковка и распаковка (boxing/unboxing)
+Методы расширения
+Индексаторы
+Partial классы, структуры, интерфейсы
+Partial методы
+Перегруженные методы
+Полиморфизм
+Ключевые слова override и new
+Абстрактные классы и члены классов
+Запечатанные классы и члены классов
+Модификаторы доступа
+Модификатор readonly
+Обобщения (инвариантность, ковариантность и контрвариантность)
+Явная и неявная реализация интерфейса
+Интернирование строк
+Атрибуты
+Reflection
+Reflection.Emit
+Обобщенные коллекции (IEnumerable, List, Dictionary, Queue, Stack и т.д.)
+Ключевое слово Yield
+Оператор using
+Интерфейс IDisposable
+GC
+Сериализация и интерфейс ISerializable
+Task
+Parallel
+lock
+async/await
+System.Collection.Concurrent
+Контракты кода (Code Contracts)
+Лямбда-выражения
+Деревья выражений
+Web development in ASP.NET Core:
+Request Pipeline
+Middleware
+Creating midlleware
+IApplicationBuilder
+IApplicationBuilder.Map
+Static files
+Node Services (SPA services)
+Routing, IRoute and URL matching
+URL rewriting
+Configuration (JSON configuration)
+Configuration by environment
+Configure simple options with a delegate
+Custom exception handling page
+Внедрение зависимостей (время существования зависимости, регистрация служб)
+Exception filter
+Action filter
+Session state
+Memory cache
+Кэширование на основе заголовков (response caching)
+Distributed cache
+Cookie
+Kestrel configuring
+Локализация
+Identity
+OAuth
+SignalR
+WebSockets
+JSON Web Token
+JSON Serialization
+XML Serialization
+Swagger documentation (filters, versions, xml comments)
+Entity Framework:
+DbContext
+DbContext registration with Dependency Injection and JSON configuration
+Data Models
+Data Annotations
+Fluent API
+Relationships
+Inheritance Strategies
+Generated Values
+Concurrency Tokens
+Shadow Properties
+Backing Fields
+Eager, Explicit, Lazy loading
+Client and Server Evaluation
+Tracking and No-Tracking
+Global Query Filters
+Concurrency Conflict during saving data
+Migrations
+Интерфейс IQueryable
+Raw SQL using
+PostgreSQL:
+Понимание концепций объектно-реляционной модели данных
+Типы индексов
+"Основные настройки postgres и администрирование (WAL, shared buffers, connection pools, dead locks, query plan, vacuum and analyze)"
+Поддержа типов JSON и JSONB
+Партицирование таблиц
+Паттерны и частоиспользуемые библиотеки:
+Паттерны GOF
+Класс Lazy
+Паттерны для доступа к данным (Repository, UnitOfWork, постраничный запрос данных)
+Понимание принципов Dependency Injection
+Многоуровневая архитектура
+Понимание принципа единственной ответственности (Single responsibility)
+Понимание принципа открытости/закрытости (Open-closed)
+Понимание принципа подстановки Барбары Лисков (Liskov substitution)
+Понимание принципа разделения интерфейса (Interface segregation)
+Понимание принципа инверсии зависимостей (Dependency Invertion)
+AutoMapper
+Linq
+NewtonSoft Json.NET
+Docker и Docker-compose:
+"Понимание инфраструктуры docker (образы, контейнеры, сети, подключаемые тома, порты и адресация)"
+"Управление контейнерами, образами (создание, удаление, просмотр логов, подключение терминала, установка пакетов)"
+Сборка, версионирование, публикация образов
+Авторизация Docker registry
+Работа с проектом docker-compose (запуск, перезапуск, остановка)
+Конфигурирование проекта docker-compose (сервисы, зависимости, внедрение конфигураций)

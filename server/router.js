@@ -1,7 +1,7 @@
 const router = require("express-promise-router")();
 const { getPlatforms } = require("./dbManager");
 
-router.get("/platforms", (req, res) => {
+router.post("/platforms", (req, res) => {
   getPlatforms().then(response => {
     res.json(response);
   });

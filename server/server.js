@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 const passport = require("passport");
 const session = require("express-session");
@@ -18,6 +19,7 @@ passport.deserializeUser(function(obj, cb) {
 passport.use(require("./auth/googleStrategy"));
 
 const app = express();
+
 app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -56,8 +58,12 @@ app.get("/logout", (req, res) => {
   res.logout();
 });
 
-app.get("/account", ensureAuthenticated, function(req, res) {
+app.get("/getMe", ensureAuthenticated, (req, res) => {
   res.json(req.user);
+});
+
+app.get("/account", ensureAuthenticated, (req, res) => {
+  res.redirect("http://localhost:3000/");
 });
 
 app.get(

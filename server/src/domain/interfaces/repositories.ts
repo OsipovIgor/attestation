@@ -5,7 +5,7 @@ export interface IRepository<T> {
     getById(id: number): Promise<T>;
 }
 
-export interface IUsersRepository extends IRepository<Users> {
+export interface IUserRepository extends IRepository<Users> {
     getByGoogleId(id: string): Promise<Users>;
     createUser(user: Users): Promise<Users>;
 }

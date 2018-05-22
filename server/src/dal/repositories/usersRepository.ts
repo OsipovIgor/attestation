@@ -6,16 +6,16 @@ import { Repository } from "./repository";
 
 import { dbClient } from "../../domain/constants/decorators";
 import { TYPES } from "../../domain/constants/types";
-import { IUsersRepository } from "../../domain/interfaces/repositories";
+import { IUserRepository } from "../../domain/interfaces/repositories";
 import { Users } from "../../domain/models";
 import { UserDataMapper } from "../dataMappers/UserDataMapper";
-import { UsersEntity } from "../entities";
+import { UserEntity } from "../entities";
 
 @injectable()
-export class UsersRepository extends Repository<Users, UsersEntity> implements IUsersRepository {
+export class UserRepository extends Repository<Users, UserEntity> implements IUserRepository {
 
     public constructor(@dbClient client: DbClient) {
-        super(client.getRepository(UsersEntity), new UserDataMapper());
+        super(client.getRepository(UserEntity), new UserDataMapper());
     }
 
     public async getByGoogleId(googleId: string): Promise<Users> {

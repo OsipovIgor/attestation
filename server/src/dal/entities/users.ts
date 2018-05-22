@@ -1,5 +1,5 @@
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
-import { Answers } from "./answers";
+import { Answer } from "./answers";
 
 /**
  * Пользователи
@@ -8,7 +8,7 @@ import { Answers } from "./answers";
 @Index("users_access_token_uindex", ["accessToken"], { unique: true })
 @Index("users_email_uindex", ["email"], { unique: true })
 @Index("users_googleid_uindex", ["googleId"], { unique: true })
-export class Users {
+export class User {
 
     @Column("integer", {
         generated: true,
@@ -53,10 +53,10 @@ export class Users {
     })
     public surname: string;
 
-    @OneToMany((type) => Answers, (answers) => answers.userId)
-    public answers: Answers[];
+    @OneToMany((type) => Answer, (answers) => answers.userId)
+    public answers: Answer[];
 
-    constructor(init?: Partial<Users>) {
+    constructor(init?: Partial<User>) {
         Object.assign(this, init);
     }
 }

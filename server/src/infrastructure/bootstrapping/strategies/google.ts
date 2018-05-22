@@ -3,7 +3,7 @@ import { OAuth2Strategy, Profile } from "passport-google-oauth";
 import { googleSettings } from "../../../configs/google";
 
 import { TYPES } from "../../../domain/constants/types";
-import { IUsersRepository } from "../../../domain/interfaces/repositories";
+import { IUserRepository } from "../../../domain/interfaces/repositories";
 import { Users } from "../../../domain/models";
 import { container } from "../../ioc/ioc_container";
 
@@ -21,7 +21,7 @@ export const google = new OAuth2Strategy(googleSettings, function (
             const surname: string = name.familyName;
             const email: string = emails[0].value;
 
-            const repository = container.get<IUsersRepository>(TYPES.UsersRepository);
+            const repository = container.get<IUserRepository>(TYPES.UserRepository);
 
             let user: Users = await repository.getByGoogleId(googleId);
             if (!user) {

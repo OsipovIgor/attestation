@@ -1,9 +1,9 @@
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
-import { Answers } from "./answers";
-import { Sections } from "./sections";
+import { Answer } from "./answers";
+import { Section } from "./sections";
 
 @Entity("knowledges", { schema: "public" })
-export class Knowledges {
+export class Knowledge {
 
     @Column("integer", {
         generated: true,
@@ -20,14 +20,14 @@ export class Knowledges {
     })
     public name: string;
 
-    @ManyToOne((type) => Sections, (sectionId) => sectionId.knowledges, { onDelete: "SET NULL", onUpdate: "SET NULL" })
+    @ManyToOne((type) => Section, (sectionId) => sectionId.knowledges, { onDelete: "SET NULL", onUpdate: "SET NULL" })
     @JoinColumn({ name: "section_id" })
-    public sectionId: Sections;
+    public sectionId: Section;
 
-    @OneToMany((type) => Answers, (answers) => answers.knowledgeId)
-    public answers: Answers[];
+    @OneToMany((type) => Answer, (answers) => answers.knowledgeId)
+    public answers: Answer[];
 
-    constructor(init?: Partial<Knowledges>) {
+    constructor(init?: Partial<Knowledge>) {
         Object.assign(this, init);
     }
 }

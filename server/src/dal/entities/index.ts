@@ -1,13 +1,13 @@
-import { Answers as AnswersEntity } from "./answers";
-import { Knowledges as KnowledgesEntity } from "./knowledges";
-import { Platforms as PlatformsEntity } from "./platforms";
-import { Sections as SectionsEntity } from "./sections";
-import { Users as UsersEntity } from "./users";
+import { Answer as AnswerEntity } from "./answers";
+import { Knowledge as KnowledgeEntity } from "./knowledges";
+import { Platform as PlatformEntity } from "./platforms";
+import { Section as SectionEntity } from "./sections";
+import { User as UserEntity } from "./users";
 
 export {
-    AnswersEntity,
-    KnowledgesEntity,
-    PlatformsEntity,
-    SectionsEntity,
-    UsersEntity,
+    AnswerEntity,
+    KnowledgeEntity,
+    PlatformEntity,
+    SectionEntity,
+    UserEntity,
 };

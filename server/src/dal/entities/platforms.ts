@@ -1,8 +1,8 @@
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
-import { Sections } from "./sections";
+import { Section } from "./sections";
 
 @Entity("platforms", { schema: "public" })
-export class Platforms {
+export class Platform {
 
     @Column("integer", {
         generated: true,
@@ -18,10 +18,10 @@ export class Platforms {
     })
     public name: string;
 
-    @OneToMany((type) => Sections, (sections) => sections.platformId)
-    public sections: Sections[];
+    @OneToMany((type) => Section, (sections) => sections.platformId)
+    public sections: Section[];
 
-    constructor(init?: Partial<Platforms>) {
+    constructor(init?: Partial<Platform>) {
         Object.assign(this, init);
     }
 }

@@ -1,12 +1,12 @@
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
-import { Knowledges } from "./knowledges";
-import { Users } from "./users";
+import { Knowledge } from "./knowledges";
+import { User } from "./users";
 
 /**
  * Ответы
  */
 @Entity("answers", { schema: "public" })
-export class Answers {
+export class Answer {
 
     @Column("integer", {
         generated: true,
@@ -34,15 +34,15 @@ export class Answers {
     })
     public wantLearn: boolean;
 
-    @ManyToOne((type) => Users, (userId) => userId.answers, { nullable: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
+    @ManyToOne((type) => User, (userId) => userId.answers, { nullable: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
     @JoinColumn({ name: "user_id" })
-    public userId: Users;
+    public userId: User;
 
-    @ManyToOne((type) => Knowledges, (knowledgeId) => knowledgeId.answers, { nullable: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
+    @ManyToOne((type) => Knowledge, (knowledgeId) => knowledgeId.answers, { nullable: false, onDelete: "CASCADE", onUpdate: "CASCADE" })
     @JoinColumn({ name: "knowledge_id" })
-    public knowledgeId: Knowledges;
+    public knowledgeId: Knowledge;
 
-    constructor(init?: Partial<Answers>) {
+    constructor(init?: Partial<Answer>) {
         Object.assign(this, init);
     }
 }

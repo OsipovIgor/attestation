@@ -1,0 +1,36 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "pretty": true,
+        "types": [
+            "reflect-metadata"
+        ],
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": false,
+        "target": "es5",
+        "lib": [
+            "es6"
+        ],
+        "rootDir": "./",
+        "outDir": "./dist",
+        "baseUrl": "./",
+        "paths": {
+            "@domain/*": [
+                "src/domain/*"
+            ],
+            "@configs": [
+                "src/configs/index"
+            ],
+        },
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+    },
+    "include": [
+        "src/**/*.ts"
+    ],
+    "exclude": [
+        "./node_modules"
+    ]
+}

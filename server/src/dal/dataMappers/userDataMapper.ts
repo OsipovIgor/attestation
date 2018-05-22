@@ -1,9 +1,9 @@
-import { Users } from "../../domain/models";
+import { User } from "../../domain/models";
 import { UserEntity } from "../entities";
 import { IEntityDataMapper } from "../interfaces/EntityDataMapper";
 
-export class UserDataMapper implements IEntityDataMapper<Users, UserEntity> {
-    public toDomain(entity: UserEntity): Users {
+export class UserDataMapper implements IEntityDataMapper<User, UserEntity> {
+    public toDomain(entity: UserEntity): User {
         if (!entity) { return null; }
         return {
             accessToken: entity.accessToken,
@@ -13,7 +13,7 @@ export class UserDataMapper implements IEntityDataMapper<Users, UserEntity> {
             surname: entity.surname,
         };
     }
-    public toDalEntity(domain: Users): UserEntity {
+    public toDalEntity(domain: User): UserEntity {
         throw new Error("Method not implemented.");
     }
 }

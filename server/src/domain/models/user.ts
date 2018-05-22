@@ -1,4 +1,4 @@
-export type Users = {
+export type User = {
     email: string,
     googleId: string,
     accessToken: string,

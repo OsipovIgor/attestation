@@ -2,6 +2,7 @@ export const TYPES = {
     App: Symbol("App"),
     DbClient: Symbol("DbClient"),
     UserRepository: Symbol("UserRepository"),
+    PlatformRepository: Symbol("PlatformRepository"),
 };
 
 /**

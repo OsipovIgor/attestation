@@ -4,17 +4,17 @@ import { googleSettings } from "../../../configs/google";
 
 import { TYPES } from "../../../domain/constants/types";
 import { IUserRepository } from "../../../domain/interfaces/repositories";
-import { Users } from "../../../domain/models";
+import { User } from "../../../domain/models";
 import { container } from "../../ioc/ioc_container";
 
-export const google = new OAuth2Strategy(googleSettings, function (
+export const google = new OAuth2Strategy(googleSettings, function(
     request: Request,
     accessToken: string,
     refreshToken: string,
     profile: Profile,
     done: (error: any, user?: any) => void,
 ) {
-    process.nextTick(async function () {
+    process.nextTick(async function() {
         try {
             const { name, emails, id: googleId } = profile;
             const firstName: string = name.givenName;
@@ -23,7 +23,7 @@ export const google = new OAuth2Strategy(googleSettings, function (
 
             const repository = container.get<IUserRepository>(TYPES.UserRepository);
 
-            let user: Users = await repository.getByGoogleId(googleId);
+            let user: User = await repository.getByGoogleId(googleId);
             if (!user) {
                 user = {
                     accessToken,

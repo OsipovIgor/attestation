@@ -9,14 +9,11 @@ import { ensureAuthenticated } from "../../../infrastructure/bootstrapping/middl
 @controller("/api/users"/*, ensureAuthenticated*/)
 export class UsersController {
 
-    // tslint:disable-next-line:variable-name
     @inject(TYPES.UserRepository) private readonly _userRepository: IUserRepository;
 
     @httpGet("/")
     public async get(@response() res: Response, @request() req: Request) {
         try {
-            const a = req.user;
-
             return await this._userRepository.getAll();
         } catch (e) {
             res.status(400).send({ error: e.message });

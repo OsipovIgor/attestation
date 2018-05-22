@@ -1,13 +1,13 @@
-import { Answers } from "./answers";
-import { Knowledges } from "./knowledges";
-import { Platforms } from "./platforms";
-import { Sections } from "./sections";
-import { Users } from "./users";
+import { Answer } from "./answer";
+import { Knowledge } from "./knowledge";
+import { Platform } from "./platform";
+import { Section } from "./section";
+import { User } from "./user";
 
 export {
-    Answers,
-    Users,
-    Knowledges,
-    Platforms,
-    Sections,
+    Answer,
+    User,
+    Knowledge,
+    Platform,
+    Section,
 };

@@ -6,6 +6,7 @@ export class UserDataMapper implements IEntityDataMapper<User, UserEntity> {
     public toDomain(entity: UserEntity): User {
         if (!entity) { return null; }
         return {
+            id: entity.id,
             accessToken: entity.accessToken,
             email: entity.email,
             googleId: entity.googleId,

@@ -26,6 +26,7 @@ export const google = new OAuth2Strategy(googleSettings, function(
             let user: User = await repository.getByGoogleId(googleId);
             if (!user) {
                 user = {
+                    id: null,
                     accessToken,
                     email,
                     googleId,

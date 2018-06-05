@@ -6,7 +6,7 @@ import { Repository } from "./repository";
 
 import { dbClient } from "../../domain/constants/decorators";
 import { TYPES } from "../../domain/constants/types";
-import { IUserRepository } from "../../domain/interfaces/repositories";
+import { IPlatformsRepository, IUserRepository } from "../../domain/interfaces/repositories";
 import { User } from "../../domain/models";
 import { UserDataMapper } from "../dataMappers/UserDataMapper";
 import { UserEntity } from "../entities";

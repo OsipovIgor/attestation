@@ -12,6 +12,14 @@ export class PlatformController {
 
     @inject(TYPES.PlatformRepository) private readonly _platformRepository: IPlatformsRepository;
 
+    /**
+     * Получить список платформ
+     *
+     * @param {Response} res
+     * @param {Request} req
+     * @returns
+     * @memberof PlatformController
+     */
     @httpGet("/")
     public async get(@response() res: Response, @request() req: Request) {
         try {

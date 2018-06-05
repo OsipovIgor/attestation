@@ -6,7 +6,7 @@ import { Repository } from "./repository";
 
 import { dbClient } from "../../domain/constants/decorators";
 import { TYPES } from "../../domain/constants/types";
-import { IPlatformsRepository } from "../../domain/interfaces/repositories";
+import { IPlatformsRepository, IUserRepository } from "../../domain/interfaces/repositories";
 import { Platform } from "../../domain/models";
 import { PlatformDataMapper } from "../dataMappers/platformDataMapper";
 import { PlatformEntity } from "../entities";

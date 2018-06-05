@@ -11,16 +11,8 @@ import { configCallback, errorConfigCallback } from "./config";
 export async function bootstrap(container: Container, appPort: number, dbSettings: DbSettings, ...modules: ContainerModule[]) {
     if (container.isBound(TYPES.App) === false) {
         try {
-            serializeUser((user, cb) => {
-                console.log();
-                return cb(null, user);
-            },
-
-            );
-            deserializeUser((obj, cb) => {
-                console.log();
-                return cb(null, obj);
-            });
+            serializeUser((user, cb) => cb(null, user));
+            deserializeUser((obj, cb) => cb(null, obj));
 
             const dbClient = await getDatabaseConnection(dbSettings);
             container.bind<DbClient>(TYPES.DbClient).toConstantValue(dbClient);

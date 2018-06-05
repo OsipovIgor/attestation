@@ -1,5 +1,6 @@
 import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
 import { Answer } from "./answers";
+import { Platform } from "./platforms";
 
 /**
  * Пользователи
@@ -52,6 +53,10 @@ export class User {
         name: "surname",
     })
     public surname: string;
+
+    @ManyToOne((type) => Platform, (platformId) => platformId.users, { nullable: true, onDelete: "CASCADE", onUpdate: "CASCADE" })
+    @JoinColumn({ name: "platform_id" })
+    public platformId: Platform;
 
     @OneToMany((type) => Answer, (answers) => answers.userId)
     public answers: Answer[];

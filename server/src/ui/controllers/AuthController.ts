@@ -1,7 +1,9 @@
-import { controller, httpGet, requestParam, response } from "inversify-express-utils";
+import { Request, Response } from "express";
+import { controller, httpGet, request, requestParam, response } from "inversify-express-utils";
 import { authenticate, AuthenticateOptions } from "passport";
+import { authorized } from "../../infrastructure/bootstrapping/middleware";
 
-@controller("/auth")
+@controller("/auth", authorized)
 export class AuthController {
 
     @httpGet("/", authenticate("google", {
@@ -14,9 +16,14 @@ export class AuthController {
     public login() { }
 
     @httpGet("/callback", authenticate("google", {
-        successRedirect: "/success",
-        failureRedirect: "login",
+        successRedirect: "/",
+        failureRedirect: "/auth/login",
     }))
     // tslint:disable-next-line:no-empty
     public loginCallback() { }
+
+    @httpGet("/login")
+    public async get(@response() res: Response, @request() req: Request) {
+        res.render("login");
+    }
 }

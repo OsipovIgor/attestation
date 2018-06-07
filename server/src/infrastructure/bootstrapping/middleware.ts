@@ -1,5 +1,9 @@
 import { NextFunction, Request, Response } from "express";
 
+interface IUserRequest extends Request {
+    isAuthenticated: () => boolean;
+}
+
 export function reqMiddleware(req: Request, res: Response, next: NextFunction) {
     console.log(`
     ----------------------------------
@@ -45,9 +49,26 @@ export function exceptionLoggerMiddleware(error: Error, req: Request, res: Respo
  * @param {NextFunction} next
  * @returns {void}
  */
-export function ensureAuthenticated(req: Request, res: Response, next: NextFunction): void {
+export function ensureAuthenticated(req: IUserRequest, res: Response, next: NextFunction): void {
     if (req.isAuthenticated()) {
         return next();
     }
-    res.redirect("/login");
+    res.redirect("auth/login");
+}
+
+/**
+ * Middleware для проверки, если пользователь авторизован
+ *
+ * @export
+ * @param {Request} req
+ * @param {Response} res
+ * @param {NextFunction} next
+ * @returns {void}
+ */
+export function authorized(req: IUserRequest, res: Response, next: NextFunction): void {
+    if (!req.isAuthenticated()) {
+        return next();
+    }
+    res.redirect("/");
+
 }

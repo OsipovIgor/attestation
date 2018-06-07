@@ -23,14 +23,7 @@ export class Manager implements IManager {
     public async bindUser(userId: number, platformId: number) {
         try {
             const user = await this.manager.findOneOrFail(UserEntity, userId);
-            if (!user) {
-                throw new Error("Пользователь не существует");
-            }
-
             const platform = await this.manager.findOneOrFail(PlatformEntity, platformId);
-            if (!platform) {
-                throw new Error("Платформа не существует");
-            }
 
             user.platformId = platform;
             await this.manager.save(user);

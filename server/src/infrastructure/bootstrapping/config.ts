@@ -1,6 +1,6 @@
 import * as bodyParser from "body-parser";
 import * as cookieParser from "cookie-parser";
-import { Application } from "express";
+import * as express from "express";
 import * as expressSession from "express-session";
 import * as helmet from "helmet";
 import { deserializeUser, initialize, serializeUser, session, use } from "passport";
@@ -16,8 +16,12 @@ import { google } from "./strategies/google";
  * @export
  * @param {Application} app
  */
-export function configCallback(app: Application) {
+export function configCallback(app: express.Application) {
     use(google);
+
+    app.set("views",  __dirname + "/views");
+    app.set("view engine", "jsx");
+    app.engine("jsx", require("express-react-views").createEngine());
 
     app.use(cookieParser());
 
@@ -36,6 +40,6 @@ export function configCallback(app: Application) {
  * @export
  * @param {Application} app
  */
-export function errorConfigCallback(app: Application) {
+export function errorConfigCallback(app: express.Application) {
     app.use(exceptionLoggerMiddleware);
 }

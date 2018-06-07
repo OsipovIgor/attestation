@@ -14,6 +14,7 @@ import { IPlatformsRepository, IUserRepository } from "./domain/interfaces/repos
 import "./ui/controllers/api/PlatformController";
 import "./ui/controllers/api/UsersController";
 import "./ui/controllers/AuthController";
+import "./ui/controllers/MainController";
 
 export const referenceDataIoCModule = new ContainerModule((bind) => {
 

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 
 
-class HelloMessage extends Component {
+class Index extends Component {
   render() {
-    return <button>Hello {this.props.name}</button>;
+    return <a href="/auth/logout">Выйти</a>;
   }
 }
 
-export default HelloMessage;
+export default Index;

@@ -12,8 +12,6 @@ export class AuthController {
             "https://www.googleapis.com/auth/plus.profile.emails.read",
         ],
     }))
-    // tslint:disable-next-line:no-empty
-    public login() { }
 
     @httpGet("/callback", authenticate("google", {
         successRedirect: "/",
@@ -23,7 +21,13 @@ export class AuthController {
     public loginCallback() { }
 
     @httpGet("/login")
-    public async get(@response() res: Response, @request() req: Request) {
+    public login(@response() res: Response, @request() req: Request) {
         res.render("login");
+    }
+
+    @httpGet("/logout")
+    public logout(@response() res: Response, @request() req: Request) {
+        req.logout();
+        res.redirect("/auth/login");
     }
 }

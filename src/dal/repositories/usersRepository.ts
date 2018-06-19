@@ -24,7 +24,7 @@ export class UserRepository extends Repository<User, UserEntity> implements IUse
   }
 
   public async createUser(user: User): Promise<User> {
-    const isInserted = await this._repository.insert(user);
+    const newUser = await this._repository.create(user);
 
     return user;
   }

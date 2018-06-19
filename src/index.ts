@@ -7,7 +7,7 @@ import { referenceDataIoCModule } from "./inversify.config";
 import { dbSettings } from "./configs";
 
 async function runApp() {
-    const port = process.env.POST || 1371
+    const port = process.env.PORT || 1371
     return await bootstrap(container, +port, dbSettings, referenceDataIoCModule);
 }
 

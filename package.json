@@ -1,0 +1,20 @@
+{
+  "name": "attestation",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start-server": "cd server && npm run prod"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OsipovIgor/attestation.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OsipovIgor/attestation/issues"
+  },
+  "homepage": "https://github.com/OsipovIgor/attestation#readme"
+}

@@ -24,8 +24,14 @@ export class UserRepository extends Repository<User, UserEntity> implements IUse
   }
 
   public async createUser(user: User): Promise<User> {
-    const newUser = await this._repository.create(user);
+    const newUser = new UserEntity();
+    newUser.googleId = user.googleId;
+    newUser.accessToken = user.accessToken;
+    newUser.email = user.email;
+    newUser.name = user.name;
+    newUser.surname = user.surname;
+    await this._repository.save(newUser);
 
-    return user;
+    return this._dataMapper.toDomain(newUser);
   }
 }

@@ -8,24 +8,24 @@ import { dbClient } from "../../domain/constants/decorators";
 import { TYPES } from "../../domain/constants/types";
 import { IPlatformsRepository, IUserRepository } from "../../domain/interfaces/repositories";
 import { User } from "../../domain/models";
-import { UserDataMapper } from "../dataMappers/UserDataMapper";
+import { UserDataMapper } from "../dataMappers/userDataMapper";
 import { UserEntity } from "../entities";
 
 @injectable()
 export class UserRepository extends Repository<User, UserEntity> implements IUserRepository {
 
-    public constructor(@dbClient client: DbClient) {
-        super(client.getRepository(UserEntity), new UserDataMapper());
-    }
+  public constructor(@dbClient client: DbClient) {
+    super(client.getRepository(UserEntity), new UserDataMapper());
+  }
 
-    public async getByGoogleId(googleId: string): Promise<User> {
-        const user = await this._repository.findOne({ googleId });
-        return this._dataMapper.toDomain(user);
-    }
+  public async getByGoogleId(googleId: string): Promise<User> {
+    const user = await this._repository.findOne({ googleId });
+    return this._dataMapper.toDomain(user);
+  }
 
-    public async createUser(user: User): Promise<User> {
-        const isInserted = await this._repository.insert(user);
+  public async createUser(user: User): Promise<User> {
+    const isInserted = await this._repository.insert(user);
 
-        return user;
-    }
+    return user;
+  }
 }

@@ -27,7 +27,9 @@ export class AuthController {
 
     @httpGet("/logout")
     public logout(@response() res: Response, @request() req: Request) {
-        req.logout();
-        res.redirect("/auth/login");
+        req.session.destroy(function (err) {
+            res.redirect("/auth/login");
+        });
+
     }
 }

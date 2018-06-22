@@ -17,7 +17,7 @@ export class PlatformRepository extends Repository<Platform, PlatformEntity> imp
     }
 
     public async create(name: string) {
-        if (!name || typeof name !== "string") {
+        if (!name) {
             throw new Error("Invalid JSON or empty string.");
         }
         const ERROR = "Карта с таким именем уже существует";
@@ -32,6 +32,34 @@ export class PlatformRepository extends Repository<Platform, PlatformEntity> imp
             } else {
                 throw new Error(ERROR);
             }
+        }
+    }
+
+    public async rename(id: number, name: string) {
+        if (!name) {
+            throw new Error("Invalid JSON or empty string.");
+        }
+
+        try {
+            const platform = await this._repository.findOneOrFail(id);
+
+            if (platform.name === name) {
+                throw new Error("Карта с таким именем уже существует");
+            } else {
+                platform.name = name;
+                await this._repository.save(platform);
+            }
+        } catch (e) {
+            throw new Error(e.message);
+        }
+    }
+
+    public async remove(id: number) {
+        try {
+            const platform = await this._repository.findOneOrFail(id);
+            await this._repository.remove(platform);
+        } catch (e) {
+            throw new Error(e.message);
         }
     }
 

@@ -2,6 +2,6 @@ api/platforms/all GET - Список всех карт
 api/platforms/create POST - Создать новую карту
     { "name": "string"}
 
-api/platforms/remove/<platformId> GET - удаление карты
-api/platforms/rename/<platformId> POST - редактирование карты
-   { "name": "string"}
+api/platforms/<platformId> DELETE - удаление карты
+api/platforms/rename POST - редактирование карты
+   { "id": "number", "name": "string"}

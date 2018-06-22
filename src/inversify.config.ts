@@ -21,5 +21,4 @@ export const referenceDataIoCModule = new ContainerModule((bind) => {
     bind<IUserRepository>(TYPES.UserRepository).to(UserRepository).inSingletonScope();
     bind<IPlatformsRepository>(TYPES.PlatformRepository).to(PlatformRepository).inSingletonScope();
     bind<IManager>(TYPES.Manager).to(Manager).inSingletonScope();
-
 });

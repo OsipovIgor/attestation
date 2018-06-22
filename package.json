@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "heroku-prebuild": "npm install",
     "build": "tsc",
     "dev": "ts-node ./src/index.ts",
     "start": "ts-node src/index.ts",

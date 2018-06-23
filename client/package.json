@@ -1,17 +1,29 @@
 {
-  "name": "client",
+  "name": "weback",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4"
+    "jss": "latest",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
+    "material-ui": "next",
+    "material-ui-icons": "latest",
+    "mdi-react": "latest",
+    "react": "^16.3.1",
+    "react-dom": "^16.3.1",
+    "react-final-form": "^3.1.5",
+    "react-jss": "latest",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "styled-components": "latest",
+    "typeface-roboto": "latest"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build"
+  },
+  "devDependencies": {
+    "react-app-rewired": "^1.5.0"
   }
 }

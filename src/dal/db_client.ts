@@ -17,6 +17,9 @@ export async function getDatabaseConnection(settings: DbSettings) {
         type: "postgres",
         entities,
         synchronize: false,
+        extra: {
+            ssl: true,
+        },
         ...settings,
     });
 

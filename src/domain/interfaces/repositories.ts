@@ -10,7 +10,11 @@ export interface IUserRepository extends IRepository<User> {
     createUser(user: User): Promise<User>;
 }
 
-export interface IPlatformsRepository extends IRepository<Platform> { }
+export interface IPlatformsRepository extends IRepository<Platform> {
+    create(name: string): void;
+    rename(id: number, name: string): void;
+    remove(id: number): void;
+ }
 export interface IKnowledgesRepository extends IRepository<Knowledge> { }
 export interface ISectionsRepository extends IRepository<Section> { }
 export interface IAnswersRepository extends IRepository<Answer> { }

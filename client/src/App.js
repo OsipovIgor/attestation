@@ -1,43 +1,52 @@
-import React, { Component } from "react";
-import axios from "axios";
-import logo from "./logo.svg";
-import "./App.css";
+import React from "react";
+import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-const SERVER_IP = "http://localhost:3000";
+import styled from "styled-components";
+import { MuiThemeProvider } from "material-ui/styles";
+import { ThemeProvider, injectGlobal } from "styled-components";
+import NotifyService from "./Services/NotificationService";
+import theme from "./Theme/theme";
+import muiTheme from "./Theme/muiTheme";
+import JssProvider from "react-jss/lib/JssProvider";
+import { create } from "jss";
+import { createGenerateClassName, jssPreset } from "material-ui/styles";
 
-const axiosConfig = {
-  withCredentials: true,
-  headers: {
-    "Access-Control-Allow-Origin": "*"
+import Layout from "./Components/Layout";
+
+import AttestationContainer from "./Containers/Attestation";
+import PlatformContainer from "./Containers/Platform";
+import FeedbackContainer from "./Containers/Feedback";
+
+injectGlobal`
+  body {
+    font-family: Roboto;
+    background: #f7f7f7 !important;
   }
-};
+`;
 
-class App extends Component {
-  state = {
-    me: null
-  };
+// необходимо для перезаписи стилей mui через SC
+// https://material-ui-next.com/customization/css-in-js/#css-injection-order
+const generateClassName = createGenerateClassName();
+const jss = create(jssPreset());
+// We define a custom insertion point that JSS will look for injecting the styles in the DOM.
+jss.options.insertionPoint = "teddyHere";
 
-  auth = () => {
-    window.location.href = `${SERVER_IP}/auth`;
-  };
-
-  getMe = () => {
-    axios.get(`${SERVER_IP}/getMe`, axiosConfig).then(response => {
-      this.setState({
-        me: JSON.stringify(response.data)
-      });
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <button onClick={this.getMe}>Получить данные о себе</button>
-        <button onClick={this.auth}>Авторизоваться с помощью Google</button>
-        {this.state.me}
-      </div>
-    );
-  }
-}
+const App = () => (
+  <JssProvider jss={jss} generateClassName={generateClassName}>
+    <MuiThemeProvider theme={muiTheme}>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Layout>
+            <Switch>
+              <Route exact path="/" component={PlatformContainer} />
+              <Route path="/attestation" component={AttestationContainer} />
+              <Route path="/feedback" component={FeedbackContainer} />
+            </Switch>
+          </Layout>
+        </BrowserRouter>
+      </ThemeProvider>
+    </MuiThemeProvider>
+  </JssProvider>
+);
 
 export default App;

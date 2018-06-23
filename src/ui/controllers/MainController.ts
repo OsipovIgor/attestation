@@ -10,6 +10,6 @@ export class MainController {
     public async get(@response() res: Response, @request() req: Request) {
 
         // res.sendFile("../infrastructure/bootstrapping/build/index.html");
-        res.sendFile("../../client/build/index.html");
+        // res.sendFile(process.cwd() + "/client/build/index.html");
     }
 }

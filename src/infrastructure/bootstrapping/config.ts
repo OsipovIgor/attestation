@@ -19,6 +19,8 @@ import { google } from "./strategies/google";
 export function configCallback(app: express.Application) {
     use(google);
 
+    app.use(express.static("../../client/build"));
+
     app.set("views",  __dirname + "/views");
     app.set("view engine", "jsx");
     app.engine("jsx", require("express-react-views").createEngine());

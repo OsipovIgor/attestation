@@ -1,5 +1,5 @@
-import { NextFunction, Request, Response } from "express";
-import { controller, httpGet, next, request, requestParam, response } from "inversify-express-utils";
+import { Request, Response } from "express";
+import { controller, httpGet, request, requestParam, response } from "inversify-express-utils";
 import { join, resolve } from "path";
 import { ensureAuthenticated } from "../../infrastructure/bootstrapping/middleware";
 
@@ -7,7 +7,9 @@ import { ensureAuthenticated } from "../../infrastructure/bootstrapping/middlewa
 export class MainController {
 
     @httpGet("/")
-    public async get(@response() res: Response, @request() req: Request, @next() next: NextFunction) {
-        res.sendFile(join(__dirname, "build", "index.html"));
+    public async get(@response() res: Response, @request() req: Request) {
+
+        // res.sendFile("../infrastructure/bootstrapping/build/index.html");
+        res.sendFile("../../client/build/index.html");
     }
 }

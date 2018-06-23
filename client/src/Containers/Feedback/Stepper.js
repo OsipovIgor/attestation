@@ -5,7 +5,7 @@ import Button from "material-ui/Button";
 import Paper from "material-ui/Paper";
 import Typography from "material-ui/Typography";
 
-import { FEEDBACK_MAP } from "../../Constatnts/Feedback";
+import { FEEDBACK_MAP } from "../../Constants/Feedback";
 
 const getSteps = () => {
   return FEEDBACK_MAP.map(item => item.question);

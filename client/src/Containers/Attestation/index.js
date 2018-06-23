@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { GO_MAP } from "../../Constatnts/Maps";
+import { GO_MAP } from "../../Constants/Maps";
 import Category from "./Category";
 
 const ContentSection = styled.section`

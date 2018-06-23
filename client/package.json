@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.18.0",
     "jss": "latest",
+    "@material-ui/core": "latest",
+    "@material-ui/icons": "latest",
     "material-ui": "next",
     "material-ui-icons": "latest",
     "mdi-react": "latest",

@@ -14,6 +14,7 @@ import { createGenerateClassName, jssPreset } from "material-ui/styles";
 import Layout from "./Components/Layout";
 
 import AttestationContainer from "./Containers/Attestation";
+import PlatformContainer from "./Containers/Platform";
 import FeedbackContainer from "./Containers/Feedback";
 
 injectGlobal`
@@ -37,7 +38,7 @@ const App = () => (
         <BrowserRouter>
           <Layout>
             <Switch>
-              <Route exact path="/" component={AttestationContainer} />
+              <Route exact path="/" component={PlatformContainer} />
               <Route path="/attestation" component={AttestationContainer} />
               <Route path="/feedback" component={FeedbackContainer} />
             </Switch>

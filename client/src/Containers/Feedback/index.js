@@ -7,7 +7,7 @@ import Typography from "material-ui/Typography";
 import Divider from "material-ui/Divider";
 import Paper from "material-ui/Paper";
 
-import { FEEDBACK_MAP } from "../../Constatnts/Feedback";
+import { FEEDBACK_MAP } from "../../Constants/Feedback";
 import { shuffle } from "../../Utils/FeedbackUtils";
 
 import QuestionAnswerIcon from "material-ui-icons/QuestionAnswer";

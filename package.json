@@ -7,7 +7,7 @@
     "build": "tsc",
     "dev": "ts-node ./src/index.ts",
     "start": "ts-node src/index.ts",
-    "prod": "concurrently \"cd client && npm run build\" \"npm run build && npm start\""
+    "prod": "concurrently \"cd client && npm install && npm run build\" \"npm run build && npm start\""
   },
   "keywords": [],
   "author": "Igor Osipov <osipov.kaluga@gmail.com> ",

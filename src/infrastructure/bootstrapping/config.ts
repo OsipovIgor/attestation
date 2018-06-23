@@ -5,7 +5,7 @@ import * as expressSession from "express-session";
 import * as helmet from "helmet";
 import { deserializeUser, initialize, serializeUser, session, use } from "passport";
 import { OAuth2Strategy } from "passport-google-oauth";
-
+import { join } from "path";
 import { sessionConfig } from "../../configs";
 import { exceptionLoggerMiddleware } from "./middleware";
 import { google } from "./strategies/google";
@@ -19,7 +19,7 @@ import { google } from "./strategies/google";
 export function configCallback(app: express.Application) {
     use(google);
 
-    app.use(express.static("../../client/build"));
+    app.use(express.static(join(__dirname, "build")));
 
     app.set("views",  __dirname + "/views");
     app.set("view engine", "jsx");

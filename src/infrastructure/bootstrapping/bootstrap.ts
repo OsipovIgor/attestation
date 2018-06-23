@@ -13,7 +13,7 @@ export async function bootstrap(container: Container, appPort: number, dbSetting
         try {
             serializeUser((user, cb) => cb(null, user));
             deserializeUser((obj, cb) => cb(null, obj));
-
+            console.log("settings", dbSettings);
             const dbClient = await getDatabaseConnection(dbSettings);
             container.bind<DbClient>(TYPES.DbClient).toConstantValue(dbClient);
             container.load(...modules);

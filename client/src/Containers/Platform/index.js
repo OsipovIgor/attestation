@@ -13,25 +13,30 @@ import Sources from "../../Sources/Sources";
 
 
 class PlatformContainer extends React.Component {
+  state = {
+    platforms: []
+  }
   getRandomColor = () => {
     const colors = ["#2882E3", "#D07131", "#D04962", "#35AF51", "#4565AF", "#A749AF"];
     return colors[Math.round(Math.random() * (colors.length - 1))];
   };
 
-  // componentDidMount() {
-  //   Sources.getPlatformList()
-  //     .then(response => {
-  //       console.log("response", response);
-  //     })
-  //     .catch(error => {
-  //       console.error("ERROR", response);
-  //     })
-  // }
+  componentDidMount() {
+    Sources.getPlatformList()
+      .then(response => {
+        this.setState({ platforms: response.data })
+      })
+      .catch(error => {
+        if(error.response.status === 401) {
+          window.location.href="/auth/login";
+        }
+      })
+  }
 
   render() {
     return (
       <Grid container spacing={24}>
-        {PLATFORMS_MOCK.map((platform, index) => (
+        {this.state.platforms.map((platform, index) => (
           <Grid item xs={12} sm={6} md={4} lg={3} key={index}>
             <Card>
               <CardContent>

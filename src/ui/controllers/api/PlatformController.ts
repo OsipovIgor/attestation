@@ -7,7 +7,7 @@ import { TYPES } from "../../../domain/constants/types";
 import { IPlatformsRepository } from "../../../domain/interfaces/repositories";
 import { ensureAuthenticated } from "../../../infrastructure/bootstrapping/middleware";
 
-@controller("/api/platform", ensureAuthenticated)
+@controller("/api/platform"/*, ensureAuthenticated*/)
 export class PlatformController {
 
     @inject(TYPES.PlatformRepository) private readonly _platformRepository: IPlatformsRepository;

@@ -39,7 +39,7 @@ const App = () => (
           <Layout>
             <Switch>
               <Route exact path="/" component={PlatformContainer} />
-              <Route path="/attestation" component={AttestationContainer} />
+              <Route path="/platform/:id" component={AttestationContainer} />
               <Route path="/feedback" component={FeedbackContainer} />
             </Switch>
           </Layout>

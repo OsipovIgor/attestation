@@ -38,12 +38,7 @@ class PlatformContainer extends React.Component {
   // реагирует на ввод в поле
   handleChangeName = e => this.setName(e.target.value);
 
-  // цвет аватара для карты
-  getRandomColor = () => {
-    const colors = ["#2882E3", "#D07131", "#D04962", "#35AF51", "#4565AF", "#A749AF"];
-    return colors[Math.round(Math.random() * (colors.length - 1))];
-  };
-
+  // Получени списка разделов
   getData = () => {
     this.setState({ loading: true });
     Sources.getPlatformList()
@@ -161,7 +156,7 @@ class PlatformContainer extends React.Component {
             <Card>
               <CardContent>
                 <CardHeader>
-                  <Avatar color={this.getRandomColor()} aria-label="Recipe">
+                  <Avatar aria-label="Recipe">
                     {platform.name[0]}
                   </Avatar>
                   <Typography gutterBottom variant="headline" component="h2">
@@ -209,7 +204,7 @@ const CardActions = styled(MUICardActions)`
 `;
 
 const Avatar = styled(MUIAvatar)`
-  background-color: ${p => p.color};
+  background-color: ${p => p.theme.palette.mainColor};
   color: #fff;
   margin-right: 20px;
 `;

@@ -18,6 +18,7 @@ import {
 import { PLATFORMS_MOCK } from "../../Constants/Platforms";
 import Sources from "../../Sources/Sources";
 import Loader from "../../Components/Loader";
+import ConfirmService from "../../Services/ConfirmService";
 
 class PlatformContainer extends React.Component {
   state = {
@@ -100,7 +101,11 @@ class PlatformContainer extends React.Component {
     this.modalClose();
   };
 
-
+  handleDeletePlatform = id => () => {
+    ConfirmService.show({ title: "Удаление раздела", question: "Вы действительно хотите удалить раздел?", action:
+        this.deletePlatform(id)
+    })
+  };
   // Удаление раздела
   deletePlatform = id => () => {
     Sources.deletePlatform(id)
@@ -120,7 +125,7 @@ class PlatformContainer extends React.Component {
 
     return(
       <Dialog
-        open={this.state.open}
+        open={open}
         onClose={this.modalClose}
         aria-labelledby="form-dialog-title"
       >
@@ -165,7 +170,7 @@ class PlatformContainer extends React.Component {
                 </CardHeader>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" onClick={this.deletePlatform(platform.id)}>
+                <Button size="small" color="primary" onClick={this.handleDeletePlatform(platform.id)}>
                   Удалить
                 </Button>
                 <Button size="small" color="primary" onClick={this.openEditMode(platform.id, platform.name)}>

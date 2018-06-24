@@ -17,22 +17,14 @@ import {
   Typography } from "@material-ui/core";
 import { PLATFORMS_MOCK } from "../../Constants/Platforms";
 import Sources from "../../Sources/Sources";
+import Loader from "../../Components/Loader";
 
 class PlatformContainer extends React.Component {
   state = {
+    loading: true,
     open: false, // модалка добавления платформы
     name: "", // Название добавляемого раздела
-    platforms: [
-      {
-        name: "AO5",
-      },
-      {
-        name: "AO5",
-      },
-      {
-        name: "AO5",
-      }
-    ]
+    platforms: []
   };
 
   modalOpen = () => {
@@ -40,7 +32,7 @@ class PlatformContainer extends React.Component {
   };
 
   modalClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, name: "" });
   };
 
   // значение добавляемого поля
@@ -54,21 +46,35 @@ class PlatformContainer extends React.Component {
     return colors[Math.round(Math.random() * (colors.length - 1))];
   };
 
-  componentDidMount() {
+  getData = () => {
+    this.setState({ loading: true });
     Sources.getPlatformList()
       .then(response => {
-        this.setState({ platforms: response.data })
+        this.setState({ platforms: response.data, loading: false })
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
           window.location.href="/auth/login";
         }
       })
+  };
+
+  componentDidMount() {
+    this.getData();
   }
 
   // Добавление раздела
   addPlatfrom = () => {
-    //Sources
+    Sources.addPlatform(this.state.name)
+      .then(response => {
+        // перезагружаем список
+        this.getData();
+      })
+      .catch(error => {
+        if(error.response && error.response.status === 401) {
+          window.location.href="/auth/login";
+        }
+      });
     this.modalClose();
   };
 
@@ -91,7 +97,7 @@ class PlatformContainer extends React.Component {
         <Button onClick={this.modalClose} color="primary">
           Отмена
         </Button>
-        <Button onClick={this.modalClose} color="primary" variant="raised">
+        <Button onClick={this.addPlatfrom} color="primary" variant="raised">
           Добавить
         </Button>
       </DialogActions>
@@ -99,6 +105,8 @@ class PlatformContainer extends React.Component {
   );
 
   render() {
+    if(this.state.loading) return <Loader text="Идёт загрузка данных..."/>;
+
     return (
       <Grid container spacing={24}>
         {this.state.platforms.map((platform, index) => (
@@ -113,11 +121,11 @@ class PlatformContainer extends React.Component {
                     {platform.name}
                   </Typography>
                 </CardHeader>
-                <Typography component="p">
-                  {platform.description}
-                </Typography>
               </CardContent>
               <CardActions>
+                <Button size="small" color="primary">
+                  Удалить
+                </Button>
                 <Button size="small" color="primary">
                   Редактировать
                 </Button>
@@ -160,6 +168,7 @@ const Avatar = styled(MUIAvatar)`
 `;
 
 const AddPlatform = styled(ListItem)`
+  min-height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -4,9 +4,12 @@ import styled from "styled-components";
 import AppBar from "material-ui/AppBar";
 import Toolbar from "material-ui/Toolbar";
 import Typography from "material-ui/Typography";
-import Button from "material-ui/Button";
+import ModalConfirm from "./ModalConfirm";
+import Notifications from "./Notifications";
 import IconButton from "material-ui/IconButton";
 import MenuIcon from "material-ui-icons/Menu";
+import ConfirmService from "../Services/ConfirmService";
+import NotificationService from "../Services/NotificationService";
 
 const Layout = ({ children }) => {
   return (
@@ -21,7 +24,11 @@ const Layout = ({ children }) => {
           </Typography>
         </Toolbar>
       </AppBar>
-      <ContentWrapper>{children}</ContentWrapper>
+      <ContentWrapper>
+        {children}
+        <ModalConfirm ref={ConfirmService.init} />
+        <Notifications ref={NotificationService.init} />
+      </ContentWrapper>
     </LayoutWrapper>
   );
 };

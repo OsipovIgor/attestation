@@ -18,6 +18,8 @@ import {
 import { PLATFORMS_MOCK } from "../../Constants/Platforms";
 import Sources from "../../Sources/Sources";
 import Loader from "../../Components/Loader";
+import ConfirmService from "../../Services/ConfirmService";
+import NotificationService from "../../Services/NotificationService";
 
 class PlatformContainer extends React.Component {
   state = {
@@ -38,12 +40,7 @@ class PlatformContainer extends React.Component {
   // реагирует на ввод в поле
   handleChangeName = e => this.setName(e.target.value);
 
-  // цвет аватара для карты
-  getRandomColor = () => {
-    const colors = ["#2882E3", "#D07131", "#D04962", "#35AF51", "#4565AF", "#A749AF"];
-    return colors[Math.round(Math.random() * (colors.length - 1))];
-  };
-
+  // Получени списка разделов
   getData = () => {
     this.setState({ loading: true });
     Sources.getPlatformList()
@@ -77,6 +74,7 @@ class PlatformContainer extends React.Component {
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел успешно добавлен!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
@@ -95,6 +93,7 @@ class PlatformContainer extends React.Component {
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел сохранен!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
@@ -105,13 +104,18 @@ class PlatformContainer extends React.Component {
     this.modalClose();
   };
 
-
+  handleDeletePlatform = id => () => {
+    ConfirmService.show({ title: "Удаление раздела", question: "Вы действительно хотите удалить раздел?", action:
+        this.deletePlatform(id)
+    })
+  };
   // Удаление раздела
   deletePlatform = id => () => {
     Sources.deletePlatform(id)
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел удалён!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
@@ -125,7 +129,7 @@ class PlatformContainer extends React.Component {
 
     return(
       <Dialog
-        open={this.state.open}
+        open={open}
         onClose={this.modalClose}
         aria-labelledby="form-dialog-title"
       >
@@ -161,7 +165,7 @@ class PlatformContainer extends React.Component {
             <Card>
               <CardContent>
                 <CardHeader>
-                  <Avatar color={this.getRandomColor()} aria-label="Recipe">
+                  <Avatar aria-label="Recipe">
                     {platform.name[0]}
                   </Avatar>
                   <Typography gutterBottom variant="headline" component="h2">
@@ -170,7 +174,7 @@ class PlatformContainer extends React.Component {
                 </CardHeader>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary" onClick={this.deletePlatform(platform.id)}>
+                <Button size="small" color="primary" onClick={this.handleDeletePlatform(platform.id)}>
                   Удалить
                 </Button>
                 <Button size="small" color="primary" onClick={this.openEditMode(platform.id, platform.name)}>
@@ -209,7 +213,7 @@ const CardActions = styled(MUICardActions)`
 `;
 
 const Avatar = styled(MUIAvatar)`
-  background-color: ${p => p.color};
+  background-color: ${p => p.theme.palette.mainColor};
   color: #fff;
   margin-right: 20px;
 `;

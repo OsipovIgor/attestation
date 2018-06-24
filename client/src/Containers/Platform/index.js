@@ -64,7 +64,7 @@ class PlatformContainer extends React.Component {
   }
 
   // Добавление раздела
-  addPlatfrom = () => {
+  addPlatform = () => {
     Sources.addPlatform(this.state.name)
       .then(response => {
         // перезагружаем список
@@ -76,6 +76,20 @@ class PlatformContainer extends React.Component {
         }
       });
     this.modalClose();
+  };
+
+  // Удаление раздела
+  deletePlatform = id => () => {
+    Sources.deletePlatform(id)
+      .then(response => {
+        // перезагружаем список
+        this.getData();
+      })
+      .catch(error => {
+        if(error.response && error.response.status === 401) {
+          window.location.href="/auth/login";
+        }
+      });
   };
 
   renderModal = () => (
@@ -97,7 +111,7 @@ class PlatformContainer extends React.Component {
         <Button onClick={this.modalClose} color="primary">
           Отмена
         </Button>
-        <Button onClick={this.addPlatfrom} color="primary" variant="raised">
+        <Button onClick={this.addPlatform} color="primary" variant="raised">
           Добавить
         </Button>
       </DialogActions>
@@ -123,7 +137,7 @@ class PlatformContainer extends React.Component {
                 </CardHeader>
               </CardContent>
               <CardActions>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={this.deletePlatform(platform.id)}>
                   Удалить
                 </Button>
                 <Button size="small" color="primary">

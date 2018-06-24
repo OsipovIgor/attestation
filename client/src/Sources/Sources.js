@@ -8,5 +8,8 @@ export default {
   },
   addPlatform(name) {
     return axios.post(`${API_URL}/api/platform/create`, { name });
+  },
+  deletePlatform(id) {
+    return axios.delete(`${API_URL}/api/platform/${id}`);
   }
 };

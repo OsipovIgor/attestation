@@ -21,14 +21,12 @@ import Loader from "../../Components/Loader";
 
 class PlatformContainer extends React.Component {
   state = {
+    editMode: false, // true - edit, false - add
+    id: null, // текущий раздел, открытый на редактирование
     loading: true,
     open: false, // модалка добавления платформы
     name: "", // Название добавляемого раздела
     platforms: []
-  };
-
-  modalOpen = () => {
-    this.setState({ open: true });
   };
 
   modalClose = () => {
@@ -63,6 +61,16 @@ class PlatformContainer extends React.Component {
     this.getData();
   }
 
+  // Открытие модалки на редактирование раздела
+  openEditMode = (id, name) => () => {
+    this.setState({ open: true, editMode: true, name, id })
+  };
+
+  // Открытие модалки на добавление раздела
+  openAddMode = () => {
+    this.setState({ open: true, editMode: false, name: "" })
+  };
+
   // Добавление раздела
   addPlatform = () => {
     Sources.addPlatform(this.state.name)
@@ -75,8 +83,28 @@ class PlatformContainer extends React.Component {
           window.location.href="/auth/login";
         }
       });
+
     this.modalClose();
   };
+
+  // Редактировать платформу
+  editPlatform = () => {
+    const { id, name } = this.state;
+
+    Sources.editPlatform(id, name)
+      .then(response => {
+        // перезагружаем список
+        this.getData();
+      })
+      .catch(error => {
+        if(error.response && error.response.status === 401) {
+          window.location.href="/auth/login";
+        }
+      });
+
+    this.modalClose();
+  };
+
 
   // Удаление раздела
   deletePlatform = id => () => {
@@ -92,31 +120,36 @@ class PlatformContainer extends React.Component {
       });
   };
 
-  renderModal = () => (
-    <Dialog
-      open={this.state.open}
-      onClose={this.modalClose}
-      aria-labelledby="form-dialog-title"
-    >
-      <DialogTitle id="form-dialog-title">Добавление раздела</DialogTitle>
-      <DialogContent>
-        <TextField
-          autoFocus
-          label="Название"
-          onChange={this.handleChangeName}
-          fullWidth
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button onClick={this.modalClose} color="primary">
-          Отмена
-        </Button>
-        <Button onClick={this.addPlatform} color="primary" variant="raised">
-          Добавить
-        </Button>
-      </DialogActions>
-    </Dialog>
-  );
+  renderModal =  () => {
+    const { open, name, editMode } = this.state;
+
+    return(
+      <Dialog
+        open={this.state.open}
+        onClose={this.modalClose}
+        aria-labelledby="form-dialog-title"
+      >
+        <DialogTitle id="form-dialog-title">{editMode ? "Редактирование раздела" : "Добавление раздела"}</DialogTitle>
+        <DialogContent>
+          <TextField
+            autoFocus
+            label="Название"
+            defaultValue={name}
+            onChange={this.handleChangeName}
+            fullWidth
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={this.modalClose} color="primary">
+            Отмена
+          </Button>
+          <Button onClick={editMode ? this.editPlatform : this.addPlatform } color="primary" variant="raised">
+            {editMode ? "Сохранить" : "Добавить"}
+          </Button>
+        </DialogActions>
+      </Dialog>
+    );
+  };
 
   render() {
     if(this.state.loading) return <Loader text="Идёт загрузка данных..."/>;
@@ -140,7 +173,7 @@ class PlatformContainer extends React.Component {
                 <Button size="small" color="primary" onClick={this.deletePlatform(platform.id)}>
                   Удалить
                 </Button>
-                <Button size="small" color="primary">
+                <Button size="small" color="primary" onClick={this.openEditMode(platform.id, platform.name)}>
                   Редактировать
                 </Button>
                 <StyledLink to={`/platform/${platform.id}`}>
@@ -153,7 +186,7 @@ class PlatformContainer extends React.Component {
           </Grid>
         ))}
         <Grid item xs={12} sm={6} md={4} lg={3}>
-          <AddPlatform button onClick={this.modalOpen}>Добавить раздел</AddPlatform>
+          <AddPlatform button onClick={this.openAddMode}>Добавить раздел</AddPlatform>
         </Grid>
         {
           this.renderModal()

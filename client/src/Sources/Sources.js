@@ -11,5 +11,8 @@ export default {
   },
   deletePlatform(id) {
     return axios.get(`${API_URL}/api/platform/remove/${id}`);
+  },
+  editPlatform(id, name) {
+    return axios.post(`${API_URL}/api/platform/rename/`, { id, name });
   }
 };

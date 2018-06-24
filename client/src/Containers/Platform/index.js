@@ -19,6 +19,7 @@ import { PLATFORMS_MOCK } from "../../Constants/Platforms";
 import Sources from "../../Sources/Sources";
 import Loader from "../../Components/Loader";
 import ConfirmService from "../../Services/ConfirmService";
+import NotificationService from "../../Services/NotificationService";
 
 class PlatformContainer extends React.Component {
   state = {
@@ -73,6 +74,7 @@ class PlatformContainer extends React.Component {
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел успешно добавлен!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
@@ -91,6 +93,7 @@ class PlatformContainer extends React.Component {
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел сохранен!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {
@@ -112,6 +115,7 @@ class PlatformContainer extends React.Component {
       .then(response => {
         // перезагружаем список
         this.getData();
+        NotificationService.success({ message: "Раздел удалён!"});
       })
       .catch(error => {
         if(error.response && error.response.status === 401) {

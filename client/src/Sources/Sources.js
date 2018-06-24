@@ -10,6 +10,6 @@ export default {
     return axios.post(`${API_URL}/api/platform/create`, { name });
   },
   deletePlatform(id) {
-    return axios.delete(`${API_URL}/api/platform/${id}`);
+    return axios.get(`${API_URL}/api/platform/remove/${id}`);
   }
 };

@@ -72,7 +72,7 @@ export class PlatformController {
      * @returns
      * @memberof PlatformController
      */
-    @httpDelete("/:id")
+    @httpGet("/remove/:id")
     public async remove(@response() res: Response, @requestParam("id") id: number) {
         try {
             return await this._platformRepository.remove(id);

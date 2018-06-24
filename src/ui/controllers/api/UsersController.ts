@@ -7,7 +7,7 @@ import { IManager } from "../../../domain/interfaces/manager";
 import { IPlatformsRepository, IUserRepository } from "../../../domain/interfaces/repositories";
 import { ensureAuthenticated } from "../../../infrastructure/bootstrapping/middleware";
 
-@controller("/api/users", ensureAuthenticated)
+@controller("/api/users"/*, ensureAuthenticated*/)
 export class UsersController {
 
     @inject(TYPES.UserRepository) private readonly _userRepository: IUserRepository;
@@ -35,7 +35,8 @@ export class UsersController {
     @httpGet("/bind/:platformId")
     public async bindUserToPlatform(@requestParam("platformId") platformId: string, @response() res: Response, @request() req: Request) {
         try {
-            return await this._manager.bindUser(req.user.id, +platformId);
+            const TEST_USER_ID = 11;
+            return await this._manager.bindUser(TEST_USER_ID, +platformId);
         } catch (e) {
             res.status(400).send({ error: e.message });
         }

@@ -27,7 +27,7 @@ class PlatformContainer extends React.Component {
         this.setState({ platforms: response.data })
       })
       .catch(error => {
-        if(error.response.status === 401) {
+        if(error.response && error.response.status === 401) {
           window.location.href="/auth/login";
         }
       })

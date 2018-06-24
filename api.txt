@@ -4,4 +4,10 @@ api/platform/create POST - Создать новую карту
 
 api/platform/remove/<platformId> GET - удаление карты
 api/platform/rename POST - редактирование карты
-   { "id": "number", "name": "string"}
+   { "id": "number", "name": "string" }
+
+api/section/create POST - добавить раздел
+    { "platformId": "number", "name": "string" }
+api/section/rename POST - редактирование раздела
+    { "sectionId": "number", "name": "string" }
+api/section/<sectionId> DELETE - удаление раздела

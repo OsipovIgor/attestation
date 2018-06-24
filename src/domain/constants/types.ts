@@ -3,6 +3,7 @@ export const TYPES = {
     DbClient: Symbol("DbClient"),
     UserRepository: Symbol("UserRepository"),
     PlatformRepository: Symbol("PlatformRepository"),
+    SectionRepository: Symbol("SectionRepository"),
     Manager: Symbol("Manager"),
 };
 

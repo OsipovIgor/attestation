@@ -16,5 +16,10 @@ export interface IPlatformsRepository extends IRepository<Platform> {
     remove(id: number): void;
  }
 export interface IKnowledgesRepository extends IRepository<Knowledge> { }
-export interface ISectionsRepository extends IRepository<Section> { }
+export interface ISectionsRepository extends IRepository<Section> {
+    getByPlatformId(platformId: number): Promise<Section>;
+    create(platformId: number, name: string): void;
+    rename(sectionId: number, name: string): void;
+    remove(sectionId: number): void;
+}
 export interface IAnswersRepository extends IRepository<Answer> { }

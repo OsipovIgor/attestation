@@ -63,7 +63,6 @@ export class PlatformController {
         }
     }
 
-
     /**
      * Удаление платформы
      *

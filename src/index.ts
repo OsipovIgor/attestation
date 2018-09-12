@@ -4,7 +4,7 @@ import { bootstrap } from "./infrastructure/bootstrapping/bootstrap";
 import { container } from "./infrastructure/ioc/ioc_container";
 import { referenceDataIoCModule } from "./inversify.config";
 
-import { dbSettings } from "./configs";
+import { dbSettings } from "@configs";
 
 async function runApp() {
     const port = process.env.PORT || 1371;

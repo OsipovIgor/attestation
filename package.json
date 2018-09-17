@@ -7,7 +7,10 @@
     "build": "tsc",
     "dev": "env-cmd ./.env ./node_modules/.bin/nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ' ./node_modules/.bin/ts-node' src/index.ts",
     "start": "ts-node ./src/index.ts",
-    "prod": "concurrently \"cd client && npm install && npm run build\" \"npm run build && npm start\""
+    "prod": "concurrently \"cd client && npm install && npm run build\" \"npm run build && npm start\"",
+    "typeorm:sync": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:sync",
+    "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n",
+    "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run"
   },
   "keywords": [],
   "author": "Igor Osipov <osipov.kaluga@gmail.com> ",

@@ -1,4 +1,12 @@
-import { Column, Entity, Index, JoinColumn, JoinTable, ManyToMany, ManyToOne, OneToMany, OneToOne, PrimaryColumn } from "typeorm";
+import {
+    Column,
+    Entity,
+    Index,
+    JoinColumn,
+    ManyToOne,
+    OneToMany,
+    PrimaryGeneratedColumn,
+} from "typeorm";
 import { Answer } from "./answers";
 import { Platform } from "./platforms";
 
@@ -11,12 +19,7 @@ import { Platform } from "./platforms";
 @Index("users_googleid_uindex", ["googleId"], { unique: true })
 export class User {
 
-    @Column("integer", {
-        generated: true,
-        nullable: false,
-        primary: true,
-        name: "id",
-    })
+    @PrimaryGeneratedColumn()
     public id: number;
 
     @Column("character varying", {

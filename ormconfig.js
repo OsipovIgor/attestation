@@ -1,4 +1,4 @@
-{
+module.exports = {
    "type": "postgres",
    "host": "localhost",
    "port": 5432,
@@ -10,14 +10,14 @@
       "./src/dal/entities/**/*.ts"
    ],
    "migrations": [
-      "src/migration/**/*.ts"
+      "src/migrations/**/*.ts"
    ],
    "subscribers": [
       "src/subscriber/**/*.ts"
    ],
    "cli": {
       "entitiesDir": "./src/dal/entities",
-      "migrationsDir": "src/migration",
+      "migrationsDir": "src/migrations",
       "subscribersDir": "src/subscriber"
    }
-}
+};

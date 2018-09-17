@@ -9,7 +9,7 @@ import { TYPES } from "../../domain/constants/types";
 import { IPlatformsRepository, IUserRepository } from "../../domain/interfaces/repositories";
 import { User } from "../../domain/models";
 import { UserDataMapper } from "../dataMappers/userDataMapper";
-import { UserEntity } from "../entities";
+import { UserEntity } from "../entities.index";
 
 @injectable()
 export class UserRepository extends Repository<User, UserEntity> implements IUserRepository {

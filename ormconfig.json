@@ -3,12 +3,11 @@
    "host": "localhost",
    "port": 5432,
    "username": "postgres",
-   "password": "Qq125125",
+   "password": "postgres",
    "database": "attestation",
-   "synchronize": true,
    "logging": false,
    "entities": [
-      "src/dal/entities/**/*.ts"
+      "./src/dal/entities/**/*.ts"
    ],
    "migrations": [
       "src/migration/**/*.ts"
@@ -17,7 +16,7 @@
       "src/subscriber/**/*.ts"
    ],
    "cli": {
-      "entitiesDir": "src/dal/entities",
+      "entitiesDir": "./src/dal/entities",
       "migrationsDir": "src/migration",
       "subscribersDir": "src/subscriber"
    }

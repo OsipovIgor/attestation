@@ -4,7 +4,7 @@ import { dbClient } from "../domain/constants/decorators";
 import { TYPES } from "../domain/constants/types";
 import { IManager } from "../domain/interfaces/manager";
 import { DbClient } from "./db_client";
-import { PlatformEntity, UserEntity, SectionEntity } from "./entities";
+import { PlatformEntity, UserEntity, SectionEntity } from "./entities.index";
 
 @injectable()
 export class Manager implements IManager {

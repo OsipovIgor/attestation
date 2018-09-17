@@ -1,0 +1,37 @@
+version: '3.1'
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    environment:
+      GCLIENTID: ${GCLIENTID}
+      GCLIENTSECRET: ${GCLIENTSECRET}
+      GCBURL: ${GCBURL}
+      DBHOST: ${DBHOST}
+      DBUSER: ${DBUSER}
+      DBPASSWORD: ${DBPASSWORD}
+      DBPORT: ${DBPORT}
+    volumes:
+      - "./src:/app/src"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPASSWORD}
+    ports:
+      - 5432:5432
+    volumes:
+      - "./pgdata:/var/lib/postgresql/data"
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

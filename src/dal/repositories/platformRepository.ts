@@ -7,7 +7,7 @@ import { dbClient } from "../../domain/constants/decorators";
 import { IPlatformsRepository } from "../../domain/interfaces/repositories";
 import { Platform } from "../../domain/models";
 import { PlatformDataMapper } from "../dataMappers/platformDataMapper";
-import { PlatformEntity } from "../entities";
+import { PlatformEntity } from "../entities.index";
 
 @injectable()
 export class PlatformRepository extends Repository<Platform, PlatformEntity> implements IPlatformsRepository {

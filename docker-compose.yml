@@ -1,0 +1,29 @@
+version: '3.1'
+services:
+  server:
+    build: .
+    environment:
+      GCLIENTID: ${GCLIENTID}
+      GCLIENTSECRET: ${GCLIENTSECRET}
+      GCBURL: ${GCBURL}
+      DBHOST: ${DBHOST}
+      DBUSER: ${DBUSER}
+      DBPASSWORD: ${DBPASSWORD}
+      DBPORT: ${DBPORT}
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: ${DBUSER}
+      POSTGRES_PASSWORD: ${DBPASSWORD}
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080

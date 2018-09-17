@@ -1,5 +1,5 @@
 import { User } from "../../domain/models";
-import { UserEntity } from "../entities";
+import { UserEntity } from "../entities.index";
 import { IEntityDataMapper } from "../interfaces/EntityDataMapper";
 
 export class UserDataMapper implements IEntityDataMapper<User, UserEntity> {

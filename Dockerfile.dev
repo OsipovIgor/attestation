@@ -1,0 +1,12 @@
+FROM mhart/alpine-node:8
+
+COPY package.json /app/
+COPY ormconfig.json /app/
+COPY tsconfig.json /app/
+COPY tslint.json /app/
+
+RUN cd /app && \
+    npm install --quiet
+WORKDIR /app
+
+CMD npm run dev

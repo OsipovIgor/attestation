@@ -1,6 +1,6 @@
 import { Connection, createConnection } from "typeorm";
 import { DbSettings } from "../domain/constants/types";
-import { AnswerEntity, KnowledgeEntity, PlatformEntity, SectionEntity, UserEntity } from "./entities";
+import { AnswerEntity, KnowledgeEntity, PlatformEntity, SectionEntity, UserEntity } from "./entities.index";
 
 export type DbClient = Connection;
 
@@ -18,7 +18,7 @@ export async function getDatabaseConnection(settings: DbSettings) {
         entities,
         synchronize: false,
         extra: {
-            ssl: true,
+            ssl: false,
         },
         ...settings,
     });

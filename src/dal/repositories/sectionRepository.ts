@@ -7,7 +7,7 @@ import { DbClient } from "../db_client";
 import { Repository } from "./repository";
 
 import { SectionDataMapper } from "../dataMappers/sectionDataMapper";
-import { SectionEntity} from "../entities";
+import { SectionEntity} from "../entities.index";
 
 @injectable()
 export class SectionRepository extends Repository<Section, SectionEntity> implements ISectionsRepository {

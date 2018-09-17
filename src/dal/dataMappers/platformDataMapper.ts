@@ -1,5 +1,5 @@
 import { Platform } from "../../domain/models";
-import { PlatformEntity } from "../entities";
+import { PlatformEntity } from "../entities.index";
 import { IEntityDataMapper } from "../interfaces/EntityDataMapper";
 
 export class PlatformDataMapper implements IEntityDataMapper<Platform, PlatformEntity> {

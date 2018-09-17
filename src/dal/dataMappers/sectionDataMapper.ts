@@ -1,5 +1,5 @@
 import { Section } from "../../domain/models";
-import { SectionEntity } from "../entities";
+import { SectionEntity } from "../entities.index";
 import { IEntityDataMapper } from "../interfaces/EntityDataMapper";
 
 export class SectionDataMapper implements IEntityDataMapper<Section, SectionEntity> {

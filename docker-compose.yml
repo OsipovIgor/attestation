@@ -10,6 +10,7 @@ services:
       DBUSER: ${DBUSER}
       DBPASSWORD: ${DBPASSWORD}
       DBPORT: ${DBPORT}
+      PORT: ${PORT}
     ports:
       - 3000:3000
     depends_on:

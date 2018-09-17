@@ -12,6 +12,7 @@ services:
       DBUSER: ${DBUSER}
       DBPASSWORD: ${DBPASSWORD}
       DBPORT: ${DBPORT}
+      PORT: ${PORT}
     volumes:
       - "./src:/app/src"
     ports:

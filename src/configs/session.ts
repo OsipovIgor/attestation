@@ -1,14 +1,10 @@
-import { RedisStoreOptions } from "connect-redis";
-import { SessionOptions } from "express-session";
+import * as connectRedis from "connect-redis";
+import * as expressSession from "express-session";
 
-const options: RedisStoreOptions = {
-    host: "redis-12761.c9.us-east-1-4.ec2.cloud.redislabs.com",
-    pass: "",
-    port: 12761,
-};
+const RedisStore = connectRedis(expressSession);
 
-export const sessionConfig: SessionOptions = {
-    // store: new RedisStore(options),
+export const sessionConfig = {
+    store: new RedisStore({ host: process.env.REDISHOST, port: parseInt(process.env.REDISPORT, 10) }),
     resave: false,
     saveUninitialized: true,
     secret: "LlUU5yoI8mJSe8lFPVpPbG1jly8PIQTi6bj2QDYS",

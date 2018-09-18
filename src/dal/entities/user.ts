@@ -1,31 +1,25 @@
 import {
     Column,
     Entity,
-    Index,
     JoinColumn,
     ManyToOne,
     OneToMany,
-    PrimaryGeneratedColumn,
-} from "typeorm";
-import { Answer } from "./answers";
-import { Platform } from "./platforms";
+    } from "typeorm";
+import { Answer } from "./answer";
+import { BaseEntity } from "./baseEntity";
+import { Platform } from "./platform";
 
 /**
  * Пользователи
  */
 @Entity("users", { schema: "public" })
-@Index("users_access_token_uindex", ["accessToken"], { unique: true })
-@Index("users_email_uindex", ["email"], { unique: true })
-@Index("users_googleid_uindex", ["googleId"], { unique: true })
-export class User {
-
-    @PrimaryGeneratedColumn()
-    public id: number;
+export class User extends BaseEntity {
 
     @Column("character varying", {
         nullable: false,
         length: 60,
         name: "email",
+        unique: true,
     })
     public email: string;
 
@@ -33,6 +27,7 @@ export class User {
         nullable: false,
         length: 50,
         name: "google_id",
+        unique: true,
     })
     public googleId: string;
 
@@ -57,14 +52,10 @@ export class User {
     })
     public surname: string;
 
-    @ManyToOne((type) => Platform, (platformId) => platformId.users, { nullable: true, onDelete: "CASCADE", onUpdate: "CASCADE" })
+    @ManyToOne(type => Platform, platform => platform.users, { nullable: true, onDelete: "CASCADE", onUpdate: "CASCADE" })
     @JoinColumn({ name: "platform_id" })
-    public platformId: Platform;
+    public platform: Platform;
 
-    @OneToMany((type) => Answer, (answers) => answers.userId)
+    @OneToMany(type => Answer, answer => answer.user)
     public answers: Answer[];
-
-    constructor(init?: Partial<User>) {
-        Object.assign(this, init);
-    }
 }

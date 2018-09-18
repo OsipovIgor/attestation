@@ -1,10 +1,10 @@
-import { injectable } from "inversify";
-import { EntityManager } from "typeorm";
-import { dbClient } from "../domain/constants/decorators";
-import { TYPES } from "../domain/constants/types";
-import { IManager } from "../domain/interfaces/manager";
-import { DbClient } from "./db_client";
-import { PlatformEntity, UserEntity, SectionEntity } from "./entities.index";
+import {injectable} from "inversify";
+import {EntityManager} from "typeorm";
+import {dbClient} from "../domain/constants/decorators";
+import {IManager} from "../domain/interfaces/manager";
+import {DbClient} from "./db_client";
+import {SectionEntity, UserEntity} from "./entities.index";
+import {Platform as PlatformEntity} from "./entities/platform";
 
 @injectable()
 export class Manager implements IManager {
@@ -23,9 +23,7 @@ export class Manager implements IManager {
     public async bindUser(userId: number, platformId: number) {
         try {
             const user = await this.manager.findOneOrFail(UserEntity, userId);
-            const platform = await this.manager.findOneOrFail(PlatformEntity, platformId);
-
-            user.platformId = platform;
+            user.platform = await this.manager.findOneOrFail(PlatformEntity, platformId);
             await this.manager.save(user);
         } catch (e) {
             throw e;

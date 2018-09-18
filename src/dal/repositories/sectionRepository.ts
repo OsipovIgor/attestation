@@ -29,7 +29,7 @@ export class SectionRepository extends Repository<Section, SectionEntity> implem
         } catch (e) {
             if (e.message !== ERROR) {
                 const section = new SectionEntity();
-                section.platformId.id = platformId;
+                section.platform.id = platformId;
                 section.name = name;
                 await this._repository.save(section);
             } else {

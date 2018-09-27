@@ -8,7 +8,6 @@
     "dev": "env-cmd ./.env ./node_modules/.bin/nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec ' ./node_modules/.bin/ts-node' src/index.ts",
     "start": "ts-node ./src/index.ts",
     "prod": "concurrently \"cd client && npm install && npm run build\" \"npm run build && npm start\"",
-    "typeorm:sync": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm schema:sync",
     "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n",
     "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run"
   },
@@ -51,7 +50,6 @@
     "nodemon": "^1.18.4",
     "ts-node": "^3.3.0",
     "tslint": "^5.10.0",
-    "typeorm-model-generator": "^0.2.18",
     "typescript": "^2.5.2"
   }
 }

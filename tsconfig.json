@@ -2,8 +2,8 @@
 	"compilerOptions": {
 		"module": "commonjs",
 		"moduleResolution": "node",
-        "pretty": true,
-        "suppressExcessPropertyErrors": true,
+		"pretty": true,
+		"suppressExcessPropertyErrors": true,
 		"types": [
 			"reflect-metadata"
 		],
@@ -32,6 +32,8 @@
 		"src/**/*.ts"
 	],
 	"exclude": [
-		"./node_modules"
+		"./node_modules",
+		"typings/browser.d.ts",
+		"typings/browser"
 	]
 }

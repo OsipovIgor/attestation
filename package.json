@@ -9,7 +9,8 @@
     "start": "ts-node ./src/index.ts",
     "prod": "concurrently \"cd client && npm install && npm run build\" \"npm run build && npm start\"",
     "migration:generate": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:generate -n",
-    "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run"
+    "migration:run": "./node_modules/.bin/ts-node ./node_modules/.bin/typeorm migration:run",
+    "convert": "./node_modules/.bin/ts-node ./scripts/TxtJsonConverter"
   },
   "keywords": [],
   "author": "Igor Osipov <osipov.kaluga@gmail.com> ",
@@ -42,7 +43,7 @@
     "@types/express-session": "^1.15.8",
     "@types/helmet": "0.0.37",
     "@types/inversify": "^2.0.33",
-    "@types/node": "^8.0.29",
+    "@types/node": "^8.10.34",
     "@types/passport": "^0.4.5",
     "@types/passport-google-oauth": "^1.0.38",
     "@types/pg": "^7.4.10",

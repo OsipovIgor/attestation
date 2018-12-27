@@ -1,0 +1,111 @@
+Платформа:
+Структуры (structs)
+Тип данных dynamic
+Упаковка и распаковка (boxing/unboxing)
+Методы расширения
+Индексаторы
+Partial классы, структуры, интерфейсы
+Partial методы
+Перегруженные методы
+Переопределенные (override) методы
+Переопределенные (override) операторы
+Полиморфизм
+Фабрика классов
+Явная реализация интерфейсов
+StringBuilder
+Интернирование строк
+Битовые флаги в перечислении
+Атрибуты
+Reflection
+IEnumerable
+Ключевое слово Yield
+Инструкция using
+Интерфейс IDisposable
+GC
+Сериализация и интерфейс ISerializable
+Thread
+ThreadPool
+Task
+Parallel
+lock
+async/await
+System.Collection.Concurrent
+Делегаты
+Лямбда-выражения
+Деревья выражений
+Интерфейс IQueryable
+Регулярные выражения (RegEx)
+Универсальные шаблоны(Generics)
+P/Invoke
+Linq
+Web development in ASP .NET:
+Жизненный цикл приложения и запроса
+IHttpModule
+Бандлы и минификация
+Маршрутизация
+Атрибуты маршрутизации
+Асинхронные методы контролера
+Представления
+Частичные представления
+Html хелперы
+Exception filter
+Authorization filter
+Action filter
+Session state
+Cookie
+Identity
+URL Rewriting
+WebSockets
+Entity Framework:
+DbContext
+DbContext registration with Dependency Injection and JSON configuration
+Data Models
+Data Annotations
+Fluent API
+Relationships
+Generated Values
+Concurrency Tokens
+Shadow Properties
+Backing Fields
+Eager, Explicit, Lazy loading
+Client and Server Evaluation
+Tracking and No-Tracking
+Global Query Filters
+Concurrency Conflict during saving data
+Migrations
+Raw SQL using
+NUnit:
+Attributes
+Assertios
+Constrains
+TestCaseData
+TestFixtureData
+Ninject:
+Понимание принципов Dependency Injection
+Multi injection
+Custom scope
+Singleton scope
+Thread scope
+Request scope
+Transient scope
+Providers
+Factories
+PostgreSQL:
+Aggregate Functions
+Explain
+Explain analyze
+Window functions
+Full Text Search
+AngularJS:
+Directives
+Services
+Factories
+Filters
+ngRoute
+Type Script:
+Interfaces
+Classes
+Functions
+Generics
+Enums
+Modules

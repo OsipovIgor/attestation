@@ -5,7 +5,8 @@ import {
   Close as CloseIcon,
   Check as SuccessIcon,
   Warning as WarningIcon,
-  LightbulbOutline as InfoIcon
+  Highlight as InfoIcon,
+
 } from "@material-ui/icons";
 import guid from "uuid/v4";
 

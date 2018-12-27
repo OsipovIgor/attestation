@@ -1,10 +1,8 @@
 import React from "react";
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 
-import styled from "styled-components";
 import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
 import { ThemeProvider, createGlobalStyle } from "styled-components";
-import NotifyService from "./Services/NotificationService";
 import theme from "./Theme/theme";
 import muiTheme from "./Theme/muiTheme";
 import { JssProvider } from "react-jss";
@@ -37,6 +35,7 @@ const App = () => (
   <JssProvider jss={jss} generateClassName={generateClassName}>
     <MuiThemeProvider theme={muiTheme}>
       <ThemeProvider theme={theme}>
+
         <BrowserRouter>
           <Layout>
             <Switch>

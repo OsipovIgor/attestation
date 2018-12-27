@@ -1,13 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-
-import AppBar from "material-ui/AppBar";
-import Toolbar from "material-ui/Toolbar";
-import Typography from "material-ui/Typography";
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
+import { Menu as MenuIcon } from "@material-ui/icons"
 import ModalConfirm from "./ModalConfirm";
 import Notifications from "./Notifications";
-import IconButton from "material-ui/IconButton";
-import MenuIcon from "material-ui-icons/Menu";
 import ConfirmService from "../Services/ConfirmService";
 import NotificationService from "../Services/NotificationService";
 

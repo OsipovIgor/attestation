@@ -53,7 +53,7 @@ export function ensureAuthenticated(req: IUserRequest, res: Response, next: Next
     if (req.isAuthenticated()) {
         return next();
     }
-    res.sendStatus(401);
+    res.redirect("/auth");
 }
 
 /**

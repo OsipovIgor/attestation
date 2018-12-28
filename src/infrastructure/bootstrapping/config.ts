@@ -3,9 +3,8 @@ import * as cookieParser from "cookie-parser";
 import * as express from "express";
 import * as expressSession from "express-session";
 import { initialize, session, use } from "passport";
-import { join } from "path";
 import { sessionConfig } from "../../configs";
-import { exceptionLoggerMiddleware } from "./middleware";
+import { exceptionLoggerMiddleware, ensureAuthenticated } from "./middleware";
 import { google } from "./strategies/google";
 
 /**
@@ -17,14 +16,14 @@ import { google } from "./strategies/google";
 export function configCallback(app: express.Application) {
     use(google);
 
-    app.use(express.static(join(__dirname, "build")));
+    app.use("/static", express.static("/app/client/static"));
     app.use((req, res, next) => {
         res.header("Access-Control-Allow-Origin", "*");
         res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
         next();
     });
 
-    app.set("views",  __dirname + "/views");
+    app.set("views", __dirname + "/views");
     app.set("view engine", "jsx");
     app.engine("jsx", require("express-react-views").createEngine());
 
@@ -37,6 +36,12 @@ export function configCallback(app: express.Application) {
 
     app.use(initialize());
     app.use(session());
+
+    app.get(/^((?!api|auth).)*$/gm, ensureAuthenticated, (req: express.Request, res: express.Response) => {
+        res.sendFile("/app/client/index.html", null, (err: any) => {
+            console.log(err);
+        });
+    });
 }
 
 /**

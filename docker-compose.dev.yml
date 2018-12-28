@@ -20,7 +20,7 @@ services:
     volumes:
       - "./src:/app/src"
     ports:
-      - 3001:3001
+      - 3000:3000
     depends_on:
       - db
       - redis

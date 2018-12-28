@@ -16,7 +16,7 @@ import "./ui/controllers/api/PlatformController";
 import "./ui/controllers/api/SectionController";
 import "./ui/controllers/api/UsersController";
 import "./ui/controllers/AuthController";
-import "./ui/controllers/MainController";
+// import "./ui/controllers/MainController";
 
 export const referenceDataIoCModule = new ContainerModule((bind) => {
 

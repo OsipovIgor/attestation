@@ -24,7 +24,7 @@
     "start": "react-app-rewired start",
     "build": "react-app-rewired build"
   },
-  "proxy": "http://localhost:1371",
+  "proxy": "http://localhost:3000",
   "devDependencies": {
     "react-app-rewired": "^1.5.0"
   }
